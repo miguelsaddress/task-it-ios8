@@ -14,14 +14,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //array of fake tasks
     //let taskArray:[[String:String]] = []
-    var taskArray:[Dictionary<String,String>] = []
+    var taskArray:[TaskModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let task1: Dictionary<String,String> = ["task": "Comprar chocolate", "description": "Uno negro y otro con leche", "date": "31/10/2014"]
-        let task2: Dictionary<String,String> = ["task": "Pasar la ITV", "description": "En leganés", "date": "03/12/2014"]
-        let task3: Dictionary<String,String> = ["task": "Recoger el traje", "description": "Ir a recoger el traje a la tintorería de la esquina", "date": "07/11/2014"]
+        let task1: TaskModel = TaskModel(task: "Comprar chocolate", description: "Uno negro y otro con leche", date: "31/10/2014")
+        let task2: TaskModel = TaskModel(task: "Pasar la ITV", description: "En leganés", date: "03/12/2014")
+        let task3: TaskModel = TaskModel(task: "Recoger el traje", description: "Ir a recoger el traje a la tintorería de la esquina", date: "07/11/2014")
         self.taskArray += [task1, task2, task3]
         self.tableView.reloadData()
     }
@@ -41,9 +41,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         var cell: TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell") as TaskCell
         let task = self.taskArray[indexPath.row]
-        cell.taskLabel.text = task["task"]
-        cell.descriptionLabel.text = task["description"]
-        cell.dateLabel.text = task["date"]
+        cell.taskLabel.text = task.task
+        cell.descriptionLabel.text = task.description
+        cell.dateLabel.text = task.date
         return cell
     }
 
