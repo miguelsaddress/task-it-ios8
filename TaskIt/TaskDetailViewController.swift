@@ -12,10 +12,16 @@ class TaskDetailViewController: UIViewController {
 
     var detailTaskModel: TaskModel!
     
+    @IBOutlet weak var taskTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var dateDatePicker: UIDatePicker!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         println(self.detailTaskModel.task)
+        self.taskTextField.text = "\(self.detailTaskModel.task)"
+        self.descriptionTextField.text = "\(self.detailTaskModel.description)"
     }
 
     override func didReceiveMemoryWarning() {
