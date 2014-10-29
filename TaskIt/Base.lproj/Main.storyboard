@@ -71,7 +71,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="3xM-Vn-wNE" id="lqm-Fc-cfY"/>
-                        <segue destination="d0T-qo-VbC" kind="push" identifier="showTaskDetail" id="23G-08-tlw"/>
+                        <segue destination="d0T-qo-VbC" kind="show" identifier="showTaskDetail" id="23G-08-tlw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -177,7 +177,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="lIH-1j-nCf">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="XNL-F0-VCV"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="XNL-F0-VCV">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="d0T-qo-VbC" id="n91-Y4-fSj"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="k5f-Dr-ih7"/>
                     </navigationItem>
                     <connections>
