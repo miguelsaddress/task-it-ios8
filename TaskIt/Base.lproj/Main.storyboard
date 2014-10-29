@@ -65,11 +65,48 @@
                     <navigationItem key="navigationItem" id="Lt7-my-sND"/>
                     <connections>
                         <outlet property="tableView" destination="3xM-Vn-wNE" id="lqm-Fc-cfY"/>
+                        <segue destination="d0T-qo-VbC" kind="show" identifier="showTaskDetail" id="23G-08-tlw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="777" y="121"/>
+        </scene>
+        <!--Task Detail View Controller-->
+        <scene sceneID="fq2-vj-W1g">
+            <objects>
+                <viewController id="d0T-qo-VbC" customClass="TaskDetailViewController" customModule="TaskIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fY5-Rn-X7t"/>
+                        <viewControllerLayoutGuide type="bottom" id="h9R-ig-jyU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bpd-z4-qf1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Aa7-4r-vZU">
+                                <rect key="frame" x="0.0" y="173" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="436276226.370992">
+                                    <!--2014-10-29 11:50:26 +0000-->
+                                </date>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Task" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0J9-Et-ElY">
+                                <rect key="frame" x="16" y="72" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Task" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wcv-Vt-sJs">
+                                <rect key="frame" x="16" y="120" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gnl-ff-Wgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1703" y="121"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ytT-7j-ZbP">
