@@ -16,6 +16,7 @@
 		49CC6EC719FFEDA90081362C /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC6EC619FFEDA90081362C /* TaskCell.swift */; };
 		49CC6ECB1A01029B0081362C /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC6ECA1A01029B0081362C /* TaskModel.swift */; };
 		49CC6ECD1A010C2C0081362C /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC6ECC1A010C2C0081362C /* TaskDetailViewController.swift */; };
+		49CC6ECF1A011C880081362C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC6ECE1A011C880081362C /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4976ABB61A013D2B004EAE64 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		4976ABB71A013D2C004EAE64 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		49CC6E9F19FFC0590081362C /* TaskIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CC6EA319FFC0590081362C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49CC6EA419FFC0590081362C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 		49CC6EC619FFEDA90081362C /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		49CC6ECA1A01029B0081362C /* TaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		49CC6ECC1A010C2C0081362C /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		49CC6ECE1A011C880081362C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 				49CC6EA419FFC0590081362C /* AppDelegate.swift */,
 				49CC6EA619FFC0590081362C /* ViewController.swift */,
 				49CC6ECC1A010C2C0081362C /* TaskDetailViewController.swift */,
+				49CC6ECE1A011C880081362C /* Date.swift */,
 				49CC6ECA1A01029B0081362C /* TaskModel.swift */,
 				49CC6EA819FFC0590081362C /* Main.storyboard */,
 				49CC6EAB19FFC0590081362C /* Images.xcassets */,
@@ -222,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49CC6EA719FFC0590081362C /* ViewController.swift in Sources */,
+				49CC6ECF1A011C880081362C /* Date.swift in Sources */,
 				49CC6EC719FFEDA90081362C /* TaskCell.swift in Sources */,
 				49CC6ECB1A01029B0081362C /* TaskModel.swift in Sources */,
 				49CC6EA519FFC0590081362C /* AppDelegate.swift in Sources */,
@@ -252,6 +258,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				49CC6EA919FFC0590081362C /* Base */,
+				4976ABB61A013D2B004EAE64 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -260,6 +267,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				49CC6EAE19FFC0590081362C /* Base */,
+				4976ABB71A013D2C004EAE64 /* es */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -419,6 +427,7 @@
 				49CC6EC019FFC0590081362C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49CC6EC119FFC0590081362C /* Build configuration list for PBXNativeTarget "TaskItTests" */ = {
 			isa = XCConfigurationList;
@@ -427,6 +436,7 @@
 				49CC6EC319FFC0590081362C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
