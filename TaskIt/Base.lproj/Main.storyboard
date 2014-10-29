@@ -104,8 +104,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="dateDatePicker" destination="Aa7-4r-vZU" id="fCC-Zb-RpZ"/>
                         <outlet property="descriptionTextField" destination="Wcv-Vt-sJs" id="Ked-P1-lPo"/>
+                        <outlet property="dueDatePicker" destination="Aa7-4r-vZU" id="R2f-Wd-K6r"/>
                         <outlet property="taskTextField" destination="0J9-Et-ElY" id="awc-mT-nHF"/>
                     </connections>
                 </viewController>
