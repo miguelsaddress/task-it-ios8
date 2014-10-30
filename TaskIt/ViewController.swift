@@ -32,8 +32,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.taskArray.sort {$0.date.timeIntervalSince1970 < $1.date.timeIntervalSince1970}
         
-        self.taskArray.sort(sortByDate)
         self.tableView.reloadData()
     }
 
@@ -75,12 +75,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         println(indexPath.row)
         self.performSegueWithIdentifier("showTaskDetail", sender: self)
     }
-
-    //Helpers
-    func sortByDate(taskOne: TaskModel, taskTwo: TaskModel) -> Bool {
-        return taskOne.date.timeIntervalSince1970 < taskTwo.date.timeIntervalSince1970
-    }
-    
-
 
 }
