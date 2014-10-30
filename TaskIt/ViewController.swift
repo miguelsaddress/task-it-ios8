@@ -39,8 +39,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.baseArray[0].sort {$0.date.timeIntervalSince1970 < $1.date.timeIntervalSince1970}
-        
+        self.orderTasks()
         self.tableView.reloadData()
     }
 
@@ -88,7 +87,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
         //height of the header
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 25
+        if self.baseArray[section].count == 0{
+            return 0
+        } else {
+            return 25
+        }
     }
         //title of the header
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -111,7 +114,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.baseArray[indexPath.section].removeAtIndex(indexPath.row)
             self.baseArray[0].append(newTask)
         }
-        
+        self.orderTasks()
         self.tableView.reloadData()
     }
     
@@ -131,6 +134,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var completeAction:UITableViewRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Complete", handler: { (tvra:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             self.baseArray[indexPath.section].removeAtIndex(indexPath.row)
             self.baseArray[1].append(newTask)
+            self.orderTasks()
             self.tableView.reloadData()
         })
         completeAction.backgroundColor = UIColor.lightGrayColor()
@@ -138,6 +142,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var uncompleteAction:UITableViewRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Uncomplete", handler: { (tvra:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             self.baseArray[indexPath.section].removeAtIndex(indexPath.row)
             self.baseArray[0].append(newTask)
+            self.orderTasks()
             self.tableView.reloadData()
         })
         uncompleteAction.backgroundColor = UIColor.redColor();
@@ -146,6 +151,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return [completeAction]
         } else {
             return [uncompleteAction]
+        }
+    }
+    
+    //Helpers
+    func orderTasks() {
+        for var i=0; i<self.baseArray.count; i++ {
+            self.baseArray[i].sort {$0.date.timeIntervalSince1970 < $1.date.timeIntervalSince1970}
         }
     }
 
