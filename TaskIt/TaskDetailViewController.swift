@@ -11,6 +11,7 @@ import UIKit
 class TaskDetailViewController: UIViewController {
 
     var detailTaskModel: TaskModel!
+    var mainVC: ViewController!
     
     @IBOutlet weak var taskTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
@@ -30,6 +31,10 @@ class TaskDetailViewController: UIViewController {
     
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
         //display the previous VC
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
         self.navigationController?.popViewControllerAnimated(true)
     }
     

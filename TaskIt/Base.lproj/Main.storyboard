@@ -110,7 +110,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dou-oc-rRC">
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dou-oc-rRC">
                                 <rect key="frame" x="0.0" y="254" width="320" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="436295958.66051">
                                     <!--2014-10-29 17:19:18 +0000-->
@@ -139,6 +139,9 @@
                                 <state key="normal" title="Add Task">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addTaskPressed:" destination="pv5-Nw-ace" eventType="touchUpInside" id="L49-K4-rhk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -191,7 +194,11 @@
                                 <action selector="cancelButtonPressed:" destination="d0T-qo-VbC" id="n91-Y4-fSj"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="k5f-Dr-ih7"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="k5f-Dr-ih7">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="d0T-qo-VbC" id="rL4-8P-cEf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionTextField" destination="Wcv-Vt-sJs" id="Ked-P1-lPo"/>

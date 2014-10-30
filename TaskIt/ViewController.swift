@@ -23,14 +23,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let task2: TaskModel = TaskModel(task: "Pasar la ITV", description: "En leganés", date:  Date.from(year: 2014, month: 12, day: 3))
         let task3: TaskModel = TaskModel(task: "Recoger el traje", description: "Ir a recoger el traje a la tintorería de la esquina", date:  Date.from(year: 2014, month: 7, day: 11))
         self.taskArray += [task1, task2, task3]
-        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
+    }
+
     @IBAction func addButtonPressed(sender: UIBarButtonItem) {
         self.performSegueWithIdentifier("showTaskAdd", sender: self)
     }
@@ -41,7 +45,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let indexPath = self.tableView.indexPathForSelectedRow()
             let thisTask = taskArray[indexPath!.row]
             detailVC.detailTaskModel = thisTask
+            detailVC.mainVC = self
+        } else if segue.identifier == "showTaskAdd" {
+            let addTaskVC: AddTaskViewController = segue.destinationViewController as AddTaskViewController
+            addTaskVC.mainVC = self
         }
+        
     }
 
     //UITableViewDataSource

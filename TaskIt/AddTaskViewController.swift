@@ -30,7 +30,14 @@ class AddTaskViewController: UIViewController {
     @IBAction func cancelButtonPressed(sender: UIButton) {
         //here we dont have access to a navigation controller to 
         //pop the current controller
-        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func addTaskPressed(sender: UIButton) {
+        let task = self.taskTextField.text
+        let description = self.descriptionTextField.text
+        let date = self.dueDatePicker.date
+        self.mainVC.taskArray.append(TaskModel(task:task, description:description, date:date))
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
