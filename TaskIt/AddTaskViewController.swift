@@ -37,7 +37,7 @@ class AddTaskViewController: UIViewController {
         let task = self.taskTextField.text
         let description = self.descriptionTextField.text
         let date = self.dueDatePicker.date
-        self.mainVC.taskArray.append(TaskModel(task:task, description:description, date:date))
+        self.mainVC.baseArray[0].append(TaskModel(task:task, description:description, date:date, completed:false))
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

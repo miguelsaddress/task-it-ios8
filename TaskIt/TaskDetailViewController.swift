@@ -38,10 +38,11 @@ class TaskDetailViewController: UIViewController {
         var task = TaskModel(
             task: self.taskTextField.text,
             description: self.descriptionTextField.text,
-            date: self.dueDatePicker.date
+            date: self.dueDatePicker.date,
+            completed: false
         )
-        let selectedIndex = self.mainVC.tableView.indexPathForSelectedRow()?.row
-        self.mainVC.taskArray[selectedIndex!] = task
+        let indexPath = self.mainVC.tableView.indexPathForSelectedRow()!
+        self.mainVC.baseArray[indexPath.section][indexPath.row] = task
 
         self.navigationController?.popViewControllerAnimated(true)
     }

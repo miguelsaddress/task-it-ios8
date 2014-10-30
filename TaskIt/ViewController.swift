@@ -14,15 +14,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //array of fake tasks
     //let taskArray:[[String:String]] = []
-    var taskArray:[TaskModel] = []
+    var baseArray: [[TaskModel]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let task1: TaskModel = TaskModel(task: "Comprar chocolate", description: "Uno negro y otro con leche", date: Date.from(year: 2014, month: 10, day: 31))
-        let task2: TaskModel = TaskModel(task: "Pasar la ITV", description: "En leganés", date:  Date.from(year: 2014, month: 12, day: 3))
-        let task3: TaskModel = TaskModel(task: "Recoger el traje", description: "Ir a recoger el traje a la tintorería de la esquina", date:  Date.from(year: 2014, month: 7, day: 11))
-        self.taskArray += [task1, task2, task3]
+        let task1: TaskModel = TaskModel(task: "Comprar chocolate", description: "Uno negro y otro con leche", date: Date.from(year: 2014, month: 10, day: 31), completed: false)
+        let task2: TaskModel = TaskModel(task: "Pasar la ITV", description: "En leganés", date:  Date.from(year: 2014, month: 12, day: 3), completed: false)
+        let task3: TaskModel = TaskModel(
+                                task: "Recoger el traje",
+                                description: "Ir a recoger el traje a la tintorería de la esquina",
+                                date:  Date.from(year: 2014, month: 7, day: 11),
+                                completed: false
+                            )
+        let incompletedTaskArray = [task1, task2, task3]
+        var completedTaskArray = [TaskModel(task: "completed1", description: "description of completed 1", date: Date.from(year: 2013, month: 9, day: 4), completed:true)]
+        self.baseArray = [incompletedTaskArray, completedTaskArray]
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +39,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.taskArray.sort {$0.date.timeIntervalSince1970 < $1.date.timeIntervalSince1970}
+        self.baseArray[0].sort {$0.date.timeIntervalSince1970 < $1.date.timeIntervalSince1970}
         
         self.tableView.reloadData()
     }
@@ -44,8 +51,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showTaskDetail" {
             let detailVC: TaskDetailViewController = segue.destinationViewController as TaskDetailViewController
-            let indexPath = self.tableView.indexPathForSelectedRow()
-            let thisTask = taskArray[indexPath!.row]
+            let indexPath = self.tableView.indexPathForSelectedRow()!
+            let thisTask = self.baseArray[indexPath.section][indexPath.row]
             detailVC.detailTaskModel = thisTask
             detailVC.mainVC = self
         } else if segue.identifier == "showTaskAdd" {
@@ -56,14 +63,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     //UITableViewDataSource
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return self.baseArray.count
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.taskArray.count
+        return self.baseArray[section].count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         var cell: TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell") as TaskCell
-        let task = self.taskArray[indexPath.row]
+        let task = self.baseArray[indexPath.section][indexPath.row]
         cell.taskLabel.text = task.task
         cell.descriptionLabel.text = task.description
         cell.dateLabel.text = Date.toStringUsingLocale( task.date )
