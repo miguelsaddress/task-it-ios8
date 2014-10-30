@@ -18,18 +18,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        let task1: TaskModel = TaskModel(task: "Comprar chocolate", description: "Uno negro y otro con leche", date: Date.from(year: 2014, month: 10, day: 31), completed: false)
-        let task2: TaskModel = TaskModel(task: "Pasar la ITV", description: "En leganés", date:  Date.from(year: 2014, month: 12, day: 3), completed: false)
-        let task3: TaskModel = TaskModel(
-                                task: "Recoger el traje",
-                                description: "Ir a recoger el traje a la tintorería de la esquina",
-                                date:  Date.from(year: 2014, month: 7, day: 11),
-                                completed: false
-                            )
-        let incompletedTaskArray = [task1, task2, task3]
-        var completedTaskArray = [TaskModel(task: "completed1", description: "description of completed 1", date: Date.from(year: 2013, month: 9, day: 4), completed:true)]
-        self.baseArray = [incompletedTaskArray, completedTaskArray]
     }
 
     override func didReceiveMemoryWarning() {
