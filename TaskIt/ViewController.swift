@@ -92,12 +92,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "INCOMPLETED"
-        } else if section == 1 {
-            return "COMPLETED"
+        switch(section) {
+            case 0: return "TO DO"
+            case 1: return "COMPLETED"
+            default: return nil
         }
-        return nil
     }
 
 }
