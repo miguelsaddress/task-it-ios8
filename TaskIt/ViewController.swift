@@ -86,11 +86,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         println(indexPath.row)
         self.performSegueWithIdentifier("showTaskDetail", sender: self)
     }
-    
+        //height of the header
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 25
     }
-    
+        //title of the header
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch(section) {
             case 0: return "TO DO"
@@ -98,5 +98,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             default: return nil
         }
     }
+    
+    //adding this function allows us to have a DELETE feature when swiping the element
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let thisTask = self.baseArray[indexPath.section][indexPath.row]
+        var newTask = TaskModel(task: thisTask.task, description: thisTask.description, date: thisTask.date, completed: !thisTask.completed)
+        
+        if indexPath.section == 0 {
+            self.baseArray[indexPath.section].removeAtIndex(indexPath.row)
+            self.baseArray[1].append(newTask)
+        } else {
+            self.baseArray[indexPath.section].removeAtIndex(indexPath.row)
+            self.baseArray[0].append(newTask)
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    //Renaming the delete button tittle
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String {
+        if indexPath.section == 0 {
+            return "Complete"
+        } else {
+            return "Uncomplete"
+        }
+    }
+
 
 }
