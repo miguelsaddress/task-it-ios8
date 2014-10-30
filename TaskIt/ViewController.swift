@@ -86,5 +86,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         println(indexPath.row)
         self.performSegueWithIdentifier("showTaskDetail", sender: self)
     }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "INCOMPLETED"
+        } else if section == 1 {
+            return "COMPLETED"
+        }
+        return nil
+    }
 
 }
