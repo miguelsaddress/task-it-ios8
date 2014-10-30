@@ -124,5 +124,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        let thisTask = self.baseArray[indexPath.section][indexPath.row]
+        var newTask = TaskModel(task: thisTask.task, description: thisTask.description, date: thisTask.date, completed: !thisTask.completed)
+
+        var completeAction:UITableViewRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Complete", handler: { (tvra:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            self.baseArray[indexPath.section].removeAtIndex(indexPath.row)
+            self.baseArray[1].append(newTask)
+            self.tableView.reloadData()
+        })
+        completeAction.backgroundColor = UIColor.lightGrayColor()
+
+        var uncompleteAction:UITableViewRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Uncomplete", handler: { (tvra:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            self.baseArray[indexPath.section].removeAtIndex(indexPath.row)
+            self.baseArray[0].append(newTask)
+            self.tableView.reloadData()
+        })
+        uncompleteAction.backgroundColor = UIColor.redColor();
+
+        if indexPath.section == 0 {
+            return [completeAction]
+        } else {
+            return [uncompleteAction]
+        }
+    }
 
 }
