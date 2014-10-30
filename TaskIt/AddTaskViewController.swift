@@ -10,6 +10,12 @@ import UIKit
 
 class AddTaskViewController: UIViewController {
 
+    @IBOutlet weak var taskTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var dueDatePicker: UIDatePicker!
+    
+    var mainVC: ViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,4 +27,10 @@ class AddTaskViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func cancelButtonPressed(sender: UIButton) {
+        //here we dont have access to a navigation controller to 
+        //pop the current controller
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

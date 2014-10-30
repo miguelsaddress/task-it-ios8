@@ -29,6 +29,7 @@ class TaskDetailViewController: UIViewController {
     }
     
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
+        //display the previous VC
         self.navigationController?.popViewControllerAnimated(true)
     }
     

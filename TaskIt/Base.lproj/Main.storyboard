@@ -65,7 +65,8 @@
                     <navigationItem key="navigationItem" title="Tasks" id="Lt7-my-sND">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="w0W-lw-AKn">
                             <connections>
-                                <segue destination="pv5-Nw-ace" kind="presentation" id="FYX-G1-bqW"/>
+                                <action selector="addButtonPressed:" destination="BYZ-38-t0r" id="irU-wX-h5H"/>
+                                <segue destination="pv5-Nw-ace" kind="presentation" identifier="showTaskAdd" id="FYX-G1-bqW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -95,6 +96,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="pv5-Nw-ace" eventType="touchUpInside" id="Hdd-c0-8NP"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ywb-Wr-FFM">
                                 <rect key="frame" x="16" y="101" width="280" height="30"/>
@@ -139,10 +143,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="TGP-HL-pUU" id="APb-FH-ZbR"/>
+                        <outlet property="dueDatePicker" destination="Dou-oc-rRC" id="0s7-uL-9I4"/>
+                        <outlet property="taskTextField" destination="Ywb-Wr-FFM" id="Aly-03-zj5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XOO-WJ-epM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1506" y="489"/>
+            <point key="canvasLocation" x="1506" y="451"/>
         </scene>
         <!--Detail-->
         <scene sceneID="fq2-vj-W1g">
