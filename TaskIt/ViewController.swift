@@ -84,7 +84,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
         //title of the header
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 && !isAllCompleted(){
+        if isAllCompleted() {
+            return "COMPLETED"
+        } else if section == 0 {
             return "TO DO"
         } else if section == 1 {
             return "COMPLETED"
@@ -95,39 +97,49 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //adding this function allows us to have a DELETE feature when swiping the element
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    }
-    
-    //Renaming the delete button tittle
-    //    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String {
-    //        if indexPath.section == 0 {
-    //            return "Complete"
-    //        } else {
-    //            return "Uncomplete"
-    //        }
-    //    }
-
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        let thisTask = self.fetchedResultsController.objectAtIndexPath(indexPath) as TaskModel
-        
-        var completeAction:UITableViewRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Complete", handler: { (tvra:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            thisTask.completed = true
-            (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
-        })
-        completeAction.backgroundColor = UIColor.lightGrayColor()
-
-        var uncompleteAction:UITableViewRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Uncomplete", handler: { (tvra:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            thisTask.completed = false
-            (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
-        })
-        uncompleteAction.backgroundColor = UIColor.redColor();
-
+        let thisTask = fetchedResultsController.objectAtIndexPath(indexPath) as TaskModel
         
         if indexPath.section == 0 && !isAllCompleted() {
-            return [completeAction]
+            thisTask.completed = true
+        }
+        else {
+            thisTask.completed = false
+        }
+        (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
+
+    }
+    
+    //    Renaming the delete button tittle
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String {
+        if indexPath.section == 0 && !isAllCompleted() {
+            return "Complete"
         } else {
-            return [uncompleteAction]
+            return "Uncomplete"
         }
     }
+
+//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+//        let thisTask = self.fetchedResultsController.objectAtIndexPath(indexPath) as TaskModel
+//        
+//        var completeAction:UITableViewRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Complete", handler: { (tvra:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+//            thisTask.completed = true
+//            (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
+//        })
+//        completeAction.backgroundColor = UIColor.lightGrayColor()
+//
+//        var uncompleteAction:UITableViewRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Uncomplete", handler: { (tvra:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+//            thisTask.completed = false
+//            (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
+//        })
+//        uncompleteAction.backgroundColor = UIColor.redColor();
+//
+//        
+//        if indexPath.section == 0 && !isAllCompleted() {
+//            return [completeAction]
+//        } else {
+//            return [uncompleteAction]
+//        }
+//    }
     
     
     func isAllCompleted() -> Bool {
