@@ -7,15 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class AddTaskViewController: UIViewController {
 
     @IBOutlet weak var taskTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
-    
-    var mainVC: ViewController!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,10 +33,26 @@ class AddTaskViewController: UIViewController {
     }
     
     @IBAction func addTaskPressed(sender: UIButton) {
-        let task = self.taskTextField.text
-        let description = self.descriptionTextField.text
-        let date = self.dueDatePicker.date
-        self.mainVC.baseArray[0].append(TaskModel(task:task, description:description, date:date, completed:false))
+        
+        let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+        let entityDescription = NSEntityDescription.entityForName("TaskModel", inManagedObjectContext: managedObjectContext!)
+        let task = TaskModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
+        
+        task.task = self.taskTextField.text
+        task.subTask = self.descriptionTextField.text
+        task.date = self.dueDatePicker.date
+        task.completed = false
+
+        (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
+        
+        var request = NSFetchRequest(entityName: "TaskModel")
+        var error: NSError? = nil
+        var results:NSArray = managedObjectContext!.executeFetchRequest(request, error: &error)!
+        println(results)
+        for res in results {
+            println(res)
+        }
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
